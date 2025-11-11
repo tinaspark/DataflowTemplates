@@ -265,6 +265,9 @@ public class DatastreamToPostgresDML extends DatastreamToDML {
             }
           } else if (!element.isNull()) {
             elements.add(formatArrayElement(element));
+          } else {
+            // FIX: Explicitly handle direct nulls in the array
+            elements.add(getNullValueSql());
           }
         }
       }
